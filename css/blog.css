@@ -1,0 +1,59 @@
+.blog {
+    padding-bottom: 50px; /*от текста до нижнего края контейнера*/
+}
+.blog__title {
+    margin: 90px 0px 50px 0px;
+}
+.blog__article-name {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0px 0px 10px 0px;
+    line-height: calc(44 / 30 * 100%);
+    color: inherit;
+    display: inline-block;  /*элемент отображается как строчный элемент, но его содержимое может быть отформатировано как блок*/
+}
+.blog__item { /*линия снизу, вместе с last-child*/
+    padding: 0px 0px 35px 0px; 
+    margin: 0px 0px 30px 0px;
+    border-bottom: 1px solid #E0E0E0;
+}
+.blog__item:last-child {
+    margin: 0px 0px 0px 0px;
+}
+.blog__info {
+    display: flex;
+    font-size: 20px;
+    margin: 0px 0px 10px 0px;
+}
+.blog__separator {
+    margin: 0px 15px;
+    color: rgb(167, 167, 167);
+}
+.blog__category {
+    color: rgb(167, 167, 167);
+}
+@media (max-width:479.98px){
+	.blog {
+        padding-bottom: 30px; 
+        text-align: left; /*прижать всё влево*/
+    }
+    .blog__title {
+        margin: 60px 0px 50px 0px;
+    }
+    .blog__article-name {
+        font-size: 26px;
+    }
+    .blog__item {
+        padding: 0px 0px 25px 0px;
+        margin: 0px 0px 25px 0px;
+    }
+    .blog__info {
+        font-size: 16px;
+    }
+}
+@media (min-width:750px){  /*изменение цвета текста при экране больше 750*/
+    .blog__title:hover {
+        transition: all 0.3s ease 0s; /* задержка */
+        color: red;
+    }
+}

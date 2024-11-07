@@ -1,0 +1,546 @@
+/*Обнуление*/
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+*,*:before,*:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+
+    color: #21243D;
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;} 
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+
+
+@import "blog";
+@import "works";
+
+
+
+/*----Общее----*/
+.container {
+	max-width: 856px;
+	margin: 0px auto; /*браузер считает что по горизонтали 
+    блоку нужно дать справа и слева одинаковое расстояние, 
+    таким образом его и центрирует*/
+    padding: 0px 6px; 
+}
+@media (max-width:991.98px){
+	.container {
+		max-width: 970px;
+	}
+}
+@media (max-width:767.98px){
+	.container {
+		max-width: 750px;
+	}
+}
+@media (max-width:479.98px){
+	.container {
+		max-width: none;
+        padding: 18 30px; /*отступ от текста до границы*/
+	}
+    .page {
+		text-align: center;
+        font-size: 18px;
+        margin: 33px 0px 0px 0px;
+	}
+    .btn {
+		margin: 0px 0px 20px 0px;
+	}
+}
+@media (min-width: 768px) {  /* меняется цвет кнопки */
+    .btn:hover {     
+        transition: background-color 0.3s ease 0s; /* задержка */
+        background-color: #e43d3d;
+    }
+}
+
+.title{
+    font-size: 44px;
+    line-height: 136%; /*пространства между строками*?
+    font-weight: 700; /* жирность шрифта */
+}
+.text {
+    font-size: 16px;
+    line-height: 144%;
+    line-height: 23px;
+}
+.title-posts {
+    font-size: 22px;
+}
+.btn {
+    border-radius: 2px;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 0px 20px; /* внутренние границы от текста до края */
+    height: 47px;
+    line-height: 145%;
+    background-color: #FF6464;
+    color: white;
+    display: inline-flex; /* создание flex контейнера*/
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.page {
+    margin: 65px 0px 0px 0px;
+    flex: 1 1 auto;
+}
+.ibg {    /* обнуление картинки, чтобы можно было вставить 
+    любую картинку относительно текущего места на странице. 
+    На деле влияет только на то, чтобы картинка была на весь 
+    экран на мобилке*/
+    img {
+        /*position: absolute;   хз не работает*/
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover; /* cover — картинка без нарушения 
+        пропорций заполнит всю доступную область, обрезая всё 
+        ненужное*/
+    }
+}
+
+
+
+/*----Шапка-----*/
+.wrapper{
+    width: 100%;
+    min-height: 100%; /*Для того, что-бы при отсутствии 
+    контента блок .wrapper не схлопывался а был всегда 
+    сто процентов по высоте. Див по умолчанию имеет 
+    ширину сто процентов, а высоту автоматическую. */
+    overflow: hidden; /*Чтобы обрезать контент выходящий 
+    за пределы блока, вы можете установить overflow: hidden . 
+    Это свойство скрывает выходящий за пределы контент.*/
+    display: flex;
+    flex-direction: column;
+    font-family: "Heebo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400, 500, 700, 900;
+    font-style: normal;
+}
+.header { /*менял под бургер*/
+    position: fixed; 
+	top: 0;
+	left: 0; /*шапка фиксированна и прилелена к верху*/
+	width: 100%;
+	 /*чтобы надвисала над всем контентом*/
+    background: white;
+}
+.header__container {
+    max-width: 1032px;
+	min-height: 70px;
+	margin: 0px auto;
+	padding: 0px 30px;
+	align-items: center; /*по центру по вертикали*/
+	justify-content: space-between; /*space-between — 
+	крайние элементы прижимаются к краям родителя, оставшиеся 
+	выстраиваются внутри контейнера равномерно, так, чтобы между 
+	ними были одинаковые отступы.*/
+}
+@media (max-width:767px) {
+	.header__menu {
+		display: flex;
+        justify-content: flex-end; /*прилипание справа*/
+        height: 82px;
+        align-items: center; /*выравнивание по высоте*/
+        padding: 20px 20px;
+	}
+}
+.menu__list {
+    display: flex;
+    justify-content: flex-end; /*прилипание справа*/
+    height: 82px;
+    align-items: center; /*выравнивание по высоте*/
+    li {
+        margin: 0px 0px 0px 33px; /*отступ между блоками*/
+    }
+}
+.menu__link__active { /*выделить цветом то, чья сейчас страница*/
+    color: red;
+    font-size: 20px;
+    font-weight: 500; 
+}
+.menu__link {
+    font-size: 20px;
+    font-weight: 500;
+    color: black;   
+}
+@media (min-width:750px){  /*изменение цвета текста при наведении 
+    при экране больше 750*/
+    .menu__link:hover {
+        transition: all 0.3s ease 0s;
+        color: red;
+    }
+} 
+
+
+
+/*-----Main-----*/
+/*----Hellow----*/
+.hellow{
+    margin: 130px 0px 70px 0px;
+}
+.hellow__container{
+    display: flex;
+}
+.hellow__avatar {   /* круглая фиксированная картинка */
+    flex: 0 0 243px;
+    height: 243px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+        max-width: 100%;
+    }
+}
+.hellow__content {
+    flex: 1 1 auto;
+    margin: 18px 110px 0px 0px;
+    align-items: start; /* принудительно прижать к верху */
+}
+/* last-child - последний элемент в блоке, margin-bottom - 
+отступ от последнего блока снизу */
+.hellow__content:last-child{  
+    margin-bottom: 0;
+}
+.hellow__title {
+    margin: 0px 0px 35px 0px;
+}
+.hellow__text {
+    margin: 0px 0px 35px 0px;
+}
+@media (max-width:991.98px) {
+    .hellow {
+        margin: 30px 0px 70px 0px;
+    }
+    .hellow__content { /* уменьшил отступ при первом breakpoint */
+		margin: 18px 50px 0px 0px;
+	}
+}
+@media (max-width:479.98px){
+	.hellow {
+		margin: 85px 0px 60px 0px;
+    }
+    .hellow__container {
+        /* для мобилки развернуть направляющую flex, задом наперед */
+        flex-direction: column-reverse;
+        text-align: center; /* выравнивание текста */            align-items: center; /* выравнивание контента в блоке */
+        }
+    .hellow__avatar {
+        flex: 0 0 170px;
+        width: 170px;
+    }
+    .hellow__content {
+        margin: 0px 0px 0px 0px;
+    }
+    .hellow__title {
+		margin: 0px 0px 20px 0px;
+	}
+    .hellow__text {
+		margin: 0px 0px 25px 0px;
+        padding: 0px 15px;
+	}
+}
+@media (max-width:560px) { /*чтобы на малых экранах фотка 
+    меньше обрезалась*/
+	.hellow__title {
+		font-size: 33px;
+	}
+}
+
+
+/*----recent-posts----*/
+.recent-posts {
+    background: #EDF7FA;
+    padding: 25px 0px 13px 0px;
+}
+.recent-posts__header {
+    display: flex;
+    margin: 0px 0px 20px 0px;
+}
+.recent-posts__title {
+    flex: 1 1 auto;
+    font-size: 22px;
+    padding: 0px 20px 0px 0px;
+}
+.recent-posts__view-all {
+    /*white-space: nowrap; /* не переносит текст */
+    flex: 0 0 auto;
+    font-size: 16px;
+    color: #00A8CC;
+    /* чтобы если будет длинный заголовок, они не слиплись */
+    line-height: 23px;    
+}
+.recent-posts__items {
+    display: flex;
+    margin: 0 -10px;
+}
+.recent-posts__column {
+    flex: 0 1 50%;
+    padding: 0px 10px;
+    margin: 0px 0px 17px 0px;
+}
+.recent-post {
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px #BBE1FA;
+    border-radius: 4px;
+    padding: 20px;
+    height: 100%;
+}
+.recent-post:last-child{  
+    margin-bottom: 0;
+}
+.recent-post__title {
+    display: inline-block; /* строчный элемент который имеет св-ва блока*/
+    color: inherit; /* наследование */
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 146%;
+    margin: 0px 0px 17px 0px;
+}
+.recent-post__info {
+    font-size: 18px;
+    margin: 0px 0px 15px 0px;
+}
+@media (min-width:750px){  /*изменение цвета текста при экране больше 750*/
+    .recent-post__title:hover {
+        transition: all 0.3s ease 0s; /* задержка */
+        color: red;
+    }
+} 
+@media (max-width:479.98px){
+	.recent-posts__view-all {
+		display: none; /*на малом экране убрать*/
+	}
+    .recent-posts__items {
+		flex-direction: column; /* перевернул основную ось */
+	}
+    .recent-post__title {
+		font-size: 22px;
+    }
+}
+
+
+/*----featured-works----*/
+.featured-works {
+    padding: 30px 0px 80px 0px;
+}
+.featured-works__title {
+    padding: 30px 0px 44px 0px;
+}
+.works {
+    display: flex;
+    align-items: flex-start;
+    padding: 0px 0px 35px 0px; /*линия снизу*/
+    margin: 0px 0px 30px 0px;
+    border-bottom: 1px solid #E0E0E0;
+}
+.works:last-child {
+    margin: 0px 0px 0px 0px;
+}
+.works__item {
+    flex: 0 0 246px;
+    border-radius: 6px;
+    min-height: 180px;
+    display: block;
+    overflow: hidden;
+}
+.works__body {
+    flex: 1 1 auto;
+}
+.works__title {
+    padding: 0px 0px 0px 18px;
+    color: inherit; /*стандартный цвет*/
+    display: inline-block; /* строчный элемент который имеет св-ва блока*/
+    font-size: 30px;
+    line-height: 147%;
+    font-weight: 700;
+    margin: 0px 0px 15px 0px;
+}
+.works__info {
+    padding: 0px 0px 0px 18px;
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 15px 0px;
+}
+.works__ear {
+    background: #142850;
+    border-radius: 16px;
+    height: 25px;
+    padding: 0px 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 18px;
+}
+.works__category {
+    color: light;
+    font-size: 20px;
+    margin: 0px 0px 0px 25px;
+}
+.works__text {
+    padding: 0px 0px 0px 18px;
+}
+@media (max-width:479.98px){
+	.works {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .works__item {
+        width: 100%;
+        margin: 0px 0px 17px 0px;
+    }
+    .works__title {
+        font-size: 24px;
+    }
+}
+
+
+
+/*-----БУРГЕР-----*/
+.menu__icon {
+	display: none; /*none — элемент не отображается на веб-странице 
+	и его содержимое не занимает места*/
+}
+
+/*----фон сайта не прокручивается-----*/
+body._look { /*чтобы за затемнением бургера сайт не прокручивался вместе с меню бургера*/
+	overflow: hidden;
+}
+
+/*-----маленькие экраны-----*/
+@media (max-width:767px) { /*3 полоски бургера*/
+	.menu__icon {
+		z-index: 15;
+		display: block;
+		position: relative;
+		width: 30px;
+		height: 18px;
+		cursor: pointer;   
+	}
+	.menu__icon span,
+	.menu__icon::before,
+	.menu__icon::after {
+		left: 0;
+		position: absolute;
+		height: 10%;
+		width: 100%;
+		transition: all 0.3s ease 0s;
+		background-color: #000000;
+	}
+	.menu__icon::after,
+	.menu__icon::before {
+		content: "";
+	}
+	.menu__icon::before {
+		top: 0;
+	}
+	.menu__icon::after {
+		bottom: 0;
+	}
+	.menu__icon span {
+		top: 50%;
+		transform: scale(1) translate(0px, -50%);
+	}
+
+	.menu__icon._active span { /*превращение 3-х полосок в крест*/
+		transform: scale(0)/* translate(0px, -50%)*/; /*убрать полоску бургера по центру*/
+    }
+	.menu__icon._active::before {
+		top: 50%;
+		transform: rotate(-45deg)/* translate(0px, -50%)*/;
+	}
+	.menu__icon._active::after {
+		top: 50%;
+		transform: rotate(45deg)/* translate(0px, 50%)*/;
+	}
+
+	.menu__body { /*затемнение экрана*/
+		position: fixed;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.596);
+		padding: 100px 30px 30px 30px;
+		transition: left 0.3s ease 0s;
+		overflow: auto; /*чтобы скролить само выпадающее меню*/
+	}
+	.menu__body._active {
+		left: 0;
+	}
+	/*
+	.menu__body::before { /*вторая шапка поверх затемненного 
+        экрана. Но можно сдвинуть вниз само затемнение
+		content: "";
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 0;
+		height: 70px;
+		
+		z-index: 1;
+	}
+    */
+    /*
+	.header__logo {
+		z-index: 2;
+	}
+	*/
+    .menu__list {
+        justify-content: center;
+        flex-direction: column;
+    }
+	.menu__list > li {
+        margin: 0px 0px 20px 0px;
+	}
+	.menu__list > li:last-child {
+		margin-bottom: 0;
+	}
+	
+	.menu__link {
+		font-size: 40px;
+        color: white;
+	}
+    .menu__link__active {
+		font-size: 40px;
+        color: white;
+	}
+}
+
+
